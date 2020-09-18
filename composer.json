@@ -6,6 +6,15 @@
         "illuminate/support": "^7.0|^8.0",
         "illuminate/database": "^7.0|^8.0"
     },
+    "license": "MIT",
+    "type": "composer-plugin",
+    "authors": [
+        {
+            "name": "Chris Page",
+            "email": "hello@motomedialab.com",
+            "role": "Developer"
+        }
+    ],
     "require-dev": {
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.0"
