@@ -2,7 +2,7 @@
 
 A simple package designed to provide a fix for the existing `Illuminate\Database\Connectors\MySQLConnector` class.
 
-cWhen connecting to MaxScale using Laravel, the `$connection->exec("use {$config['database']};");` command is run,
+When connecting to MaxScale using Laravel, the `$connection->exec("use {$config['database']};");` command is run,
 not only creating a surplus query but also triggering a database connection error when using MariaDB MaxScale.
 Within MaxScale logs, you'll see an error similar to:
 
@@ -13,7 +13,7 @@ error  : (1) Invalid authentication message from backend 'your-backend'. Error c
 The reason for this, is that Laravel is trying to establish a connection with '\`database_name\`' (backticks) when it should simply be connecting to 'database_name' (no backticks).
 
 As the database name has already been declared within the PDO DSN (see [PR #34389](https://github.com/laravel/framework/pull/34389)), the offending line of code is effectively surplus to requirements already.
-All this package does is remove the surplus database selection by overriding the existing MySQL connector to remove a few lines of code.
+All this package does is remove the surplus database selection by overriding the existing MySQL connector to remove the offending lines of code.
 
 ## Installation
 
@@ -33,5 +33,4 @@ Once one of the above options have been completed, you should be able to connect
 via Laravel no problem.
 
 ### Notes
-
-- This package will still work with MySQL and remove the surplus database selection query being performed on each load.
+- While this package was built to resolve Laravel MaxScale issues, the package will still work with MySQL and remove the surplus query being performed on each load
